@@ -37,7 +37,7 @@ namespace Oracle.Core.Helpers
         {
             if (OnAdd != null)
             {
-                OnAdd(this, null); // TODO: return item
+                OnAdd(this, null);
             }
 
             base.Add(item);
@@ -47,7 +47,7 @@ namespace Oracle.Core.Helpers
         {
             if (OnRemove != null)
             {
-                OnRemove(this, null); // TODO: return item
+                OnRemove(this, null);
             }
 
             base.Remove(item);
@@ -57,7 +57,7 @@ namespace Oracle.Core.Helpers
         {
             if (OnRemove != null)
             {
-                OnRemove(this, null); // TODO: return items
+                OnRemove(this, null); 
             }
 
             base.RemoveAll(match);

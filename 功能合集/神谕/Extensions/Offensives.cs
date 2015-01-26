@@ -16,24 +16,24 @@ namespace Oracle.Extensions
             Game.OnGameUpdate += Game_OnGameUpdate;
 
             _mainMenu = new Menu("攻击 物品", "omenu");
-            _menuConfig = new Menu("攻击物品 设置", "oconfig");
+            _menuConfig = new Menu("攻击物品 配置", "oconfig");
 
             foreach (var x in ObjectManager.Get<Obj_AI_Hero>().Where(x => x.IsEnemy))
                 _menuConfig.AddItem(new MenuItem("ouseOn" + x.SkinName, "Use for " + x.SkinName)).SetValue(true);
             _mainMenu.AddSubMenu(_menuConfig);
 
-            CreateMenuItem("魔宗利刃", "Muramana", 90, 30, true);
-            CreateMenuItem("提亚马特/九头蛇", "Hydra", 90, 30);
-            CreateMenuItem("冥火之拥", "DFG", 100, 30);
-            CreateMenuItem("海克斯科技枪", "Hextech", 90, 30);
-            CreateMenuItem("幽梦之灵", "Youmuus", 90, 30);
-            CreateMenuItem("比尔吉沃特弯刀", "Cutlass", 90, 30);
-            CreateMenuItem("破败王者之刃", "Botrk", 70, 70);
-            CreateMenuItem("冰雪女王之杖", "Frostclaim", 100, 30);
-            CreateMenuItem("神圣之剑", "Divine", 90, 30);
-            CreateMenuItem("守护者的号角", "Guardians", 90, 30);
-            CreateMenuItem("黯炎火炬", "Torch", 100, 30);
-            CreateMenuItem("冰霜战锤", "Entropy", 90, 30);
+            CreateMenuItem("魔切", "魔切", 90, 30, true);
+            CreateMenuItem("提亚马特/九头蛇", "提亚马特/九头蛇", 90, 30);
+            CreateMenuItem("冥火之握", "冥火之握", 100, 30);
+            CreateMenuItem("海克斯科技枪刃", "海克斯科技枪刃", 90, 30);
+            CreateMenuItem("幽梦之灵", "幽梦之灵", 90, 30);
+            CreateMenuItem("尔吉沃特弯刀", "尔吉沃特弯刀", 90, 30);
+            CreateMenuItem("破败王者之刃", "破败王者之刃", 70, 70);
+            CreateMenuItem("冰雪女王之杖", "冰雪女王之杖", 100, 30);
+            CreateMenuItem("神圣之剑", "神圣之剑", 90, 30);
+            CreateMenuItem("守护者的号角", "守护者的号角", 90, 30);
+            CreateMenuItem("黯炎火炬", "黯炎火炬", 100, 30);
+            CreateMenuItem("冰霜战锤", "冰霜战锤", 90, 30);
 
             root.AddSubMenu(_mainMenu);
         }
@@ -165,17 +165,17 @@ namespace Oracle.Extensions
         private static void CreateMenuItem(string displayname, string name, int evalue, int avalue, bool usemana = false)
         {
             var menuName = new Menu(displayname, name.ToLower());
-            menuName.AddItem(new MenuItem("use" + name, "Use " + name)).SetValue(true);
-            menuName.AddItem(new MenuItem("use" + name + "Pct", "Use on enemy HP %")).SetValue(new Slider(evalue));
+            menuName.AddItem(new MenuItem("use" + name, "使用 " + name)).SetValue(true);
+            menuName.AddItem(new MenuItem("use" + name + "Pct", "使用敌人血量 %")).SetValue(new Slider(evalue));
 
             if (!usemana)
-                menuName.AddItem(new MenuItem("use" + name + "Me", "Use on my HP %")).SetValue(new Slider(avalue));
+                menuName.AddItem(new MenuItem("use" + name + "Me", "使用自己血量 %")).SetValue(new Slider(avalue));
 
             if (usemana)
-                menuName.AddItem(new MenuItem("use" + name + "Mana", "Minimum mana % to use")).SetValue(new Slider(35));
+                menuName.AddItem(new MenuItem("use" + name + "Mana", "使用最小法力值 %")).SetValue(new Slider(35));
 
             if (name == "Muramana")
-                menuName.AddItem( new MenuItem("muraMode", " Muramana Mode: ").SetValue(new StringList(new[] {"Always", "Combo"}, 1)));
+                menuName.AddItem( new MenuItem("muraMode", " 魔切 模式: ").SetValue(new StringList(new[] {"总是", "连招"}, 1)));
 
             _mainMenu.AddSubMenu(menuName);
         }

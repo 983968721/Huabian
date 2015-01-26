@@ -22,11 +22,11 @@ namespace Oracle.Extensions
                 _menuConfig.AddItem(new MenuItem("DefenseOn" + x.SkinName, "Use for " + x.SkinName)).SetValue(true);
             _mainMenu.AddSubMenu(_menuConfig);
 
-            CreateMenuItem("兰顿之兆", "Randuins", "selfcount", 40, 40, true);
-            CreateMenuItem("炽天使之拥", "Seraphs",  "selfhealth", 55, 40);
-            CreateMenuItem("中亚的沙漏", "Zhonyas", "selfzhonya", 35, 40);
-            CreateMenuItem("崇山圣盾", "Mountain", "allyhealth", 20, 40);
-            CreateMenuItem("钢铁烈阳之匣", "Locket", "allyhealth", 45, 40);
+            CreateMenuItem("兰顿之兆", "兰顿之兆", "selfcount", 40, 40, true);
+            CreateMenuItem("炽天使之拥", "炽天使之拥",  "selfhealth", 55, 40);
+            CreateMenuItem("中亚的沙漏", "中亚的沙漏", "selfzhonya", 35, 40);
+            CreateMenuItem("崇山圣盾", "崇山圣盾", "allyhealth", 20, 40);
+            CreateMenuItem("钢铁烈阳之匣", "钢铁烈阳之匣", "allyhealth", 45, 40);
 
             var tMenu = new Menu("升华护符", "tboost");
             tMenu.AddItem(new MenuItem("useTalisman", "使用 升华护符")).SetValue(true);
@@ -39,13 +39,13 @@ namespace Oracle.Extensions
             bMenu.AddItem(new MenuItem("useBanner", "使用 号令之旗")).SetValue(true);
             _mainMenu.AddSubMenu(bMenu);
 
-            CreateMenuItem("沃格莱特的女巫帽 ", "Wooglets", "selfzhonya", 35, 40);
+            CreateMenuItem("沃格莱特的女巫帽 ", "沃格莱特的女巫帽", "selfzhonya", 35, 40);
             var oMenu = new Menu("扫描透镜", "olens");
             oMenu.AddItem(new MenuItem("useOracles", "对隐形单位使用")).SetValue(true);
             oMenu.AddItem(new MenuItem("oracleMode", "模式: ")).SetValue(new StringList(new[] { "总是", "连招" }));
             _mainMenu.AddSubMenu(oMenu);
 
-            CreateMenuItem("奥丁面纱", "Odyns", "selfcount", 40, 40, true); 
+            CreateMenuItem("奥丁面纱", "奥丁面纱", "selfcount", 40, 40, true); 
        
             root.AddSubMenu(_mainMenu);
         }
@@ -62,11 +62,11 @@ namespace Oracle.Extensions
 
             if (OC.IncomeDamage >= 1)
             {
-                UseItem("allyshieldlocket", "兰顿之兆", 3190, 600f);
-                UseItem("selfshieldseraph", "炽天使之拥", 3040);
-                UseItem("selfshieldzhonya", "中亚的沙漏", 3157);
-                UseItem("allyshieldmountain", "崇山圣盾", 3401, 700f);
-                UseItem("selfshieldzhonya", "钢铁烈阳之匣", 3090);
+                UseItem("allyshieldlocket", "Locket", 3190, 600f);
+                UseItem("selfshieldseraph", "Seraphs", 3040);
+                UseItem("selfshieldzhonya", "Zhonyas", 3157);
+                UseItem("allyshieldmountain", "Mountain", 3401, 700f);
+                UseItem("selfshieldzhonya", "Wooglets", 3090);
             }
 
             // Oracle's Lens 

@@ -107,9 +107,9 @@ namespace Oracle.Extensions
         private static void CreateMenuItem(string displayname, string name, int ccvalue)
         {
             var menuName = new Menu(displayname, name);
-            menuName.AddItem(new MenuItem("use" + name, "Use " + name)).SetValue(true);
-            menuName.AddItem(new MenuItem(name + "Count", "Min spells to use"));//.SetValue(new Slider(ccvalue, 1, 5));
-            menuName.AddItem(new MenuItem(name + "Duration", "Buff duration to use"));//.SetValue(new Slider(2, 1, 5));
+            menuName.AddItem(new MenuItem("use" + name, "使用 " + name)).SetValue(true);
+            menuName.AddItem(new MenuItem(name + "Count", "使用净化|状态数量"));//.SetValue(new Slider(ccvalue, 1, 5));
+            menuName.AddItem(new MenuItem(name + "Duration", "使用净化|状态持续时间"));//.SetValue(new Slider(2, 1, 5));
             _mainMenu.AddSubMenu(menuName);
         }
     }

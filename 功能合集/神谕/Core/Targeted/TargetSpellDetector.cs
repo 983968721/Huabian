@@ -45,7 +45,7 @@ namespace Oracle.Core.Targeted
                 InitComplete = true;
                 Obj_AI_Base.OnProcessSpellCast += OnTargetSpellDetection;
                 Game.OnGameUpdate += OnGameUpdate;
-                Console.WriteLine("法术探测器 初始化成功!");
+                Console.WriteLine("Target Spell Detector Init");
             }
         }
 
@@ -109,7 +109,7 @@ namespace Oracle.Core.Targeted
 
                 if (data == null)
                 {
-                    Console.WriteLine("法术检测失败: " + args.SData.Name);
+                    Console.WriteLine("Target Spell not Found: " + args.SData.Name);
                     return;
                 }
 

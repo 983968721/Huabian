@@ -59,7 +59,7 @@ namespace Oracle.Extensions
             Game.OnGameUpdate += Game_OnGameUpdate;
 
             _mainMenu = new Menu("召唤师 技能", "summoners");
-            _menuConfig = new Menu("召唤师技能 设置", "sconfig");
+            _menuConfig = new Menu("召唤师技能 配置", "sconfig");
             _isJungling = SmiteAll.Any(x => Items.HasItem(x));
 
             foreach (var x in ObjectManager.Get<Obj_AI_Hero>().Where(x => x.IsAlly))
@@ -70,17 +70,17 @@ namespace Oracle.Extensions
             if (smite != SpellSlot.Unknown || _isJungling)
             {
                 _ss = true;
-                var Smite = new Menu("惩 戒", "msmite");
-                Smite.AddItem(new MenuItem("useSmite", "启 用")).SetValue(new KeyBind(77, KeyBindType.Toggle, true));
-                Smite.AddItem(new MenuItem("smiteSpell", "惩戒时丨使用技能")).SetValue(true);
+                var Smite = new Menu("惩戒", "msmite");
+                Smite.AddItem(new MenuItem("useSmite", "使用 惩戒")).SetValue(new KeyBind(77, KeyBindType.Toggle, true));
+                Smite.AddItem(new MenuItem("smiteSpell", "惩戒 + 技能")).SetValue(true);
                 Smite.AddItem(new MenuItem("drawSmite", "显示 惩戒 范围")).SetValue(true);
                 Smite.AddItem(new MenuItem("smiteSmall", "惩戒 小野怪")).SetValue(false);
                 Smite.AddItem(new MenuItem("smiteLarge", "惩戒 大野怪")).SetValue(true);
                 Smite.AddItem(new MenuItem("smiteEpic", "惩戒 史诗野怪")).SetValue(true);
-                Smite.AddItem(new MenuItem("smitemode", "惩戒 敌人: "))
+                Smite.AddItem(new MenuItem("smitemode", "惩戒敌人: "))
                     .SetValue(new StringList(new[] { "抢人头", "连招", "禁用" }));
                 Smite.AddItem(
-                    new MenuItem("saveSmite", "保持 惩戒技能").SetValue(true));
+                    new MenuItem("saveSmite", "保留惩戒技能").SetValue(true));
                 _mainMenu.AddSubMenu(Smite);
             }
 
@@ -88,9 +88,9 @@ namespace Oracle.Extensions
             if (ignite != SpellSlot.Unknown)
             {
                 _ii = true;
-                var Ignite = new Menu("点 燃", "mignite");
-                Ignite.AddItem(new MenuItem("useIgnite", "启 用")).SetValue(true);
-                Ignite.AddItem(new MenuItem("dotMode", "模 式: ")).SetValue(new StringList(new[] {"击杀", "连招"}));
+                var Ignite = new Menu("点燃", "mignite");
+                Ignite.AddItem(new MenuItem("useIgnite", "启用 点燃")).SetValue(true);
+                Ignite.AddItem(new MenuItem("dotMode", "模式: ")).SetValue(new StringList(new[] {"击杀模式", "连招"}));
                 _mainMenu.AddSubMenu(Ignite);
             }
 
@@ -98,10 +98,10 @@ namespace Oracle.Extensions
             if (heal != SpellSlot.Unknown)
             {
                 _hh = true;
-                var Heal = new Menu("治 疗", "mheal");
-                Heal.AddItem(new MenuItem("useHeal", "启 用")).SetValue(true);
-                Heal.AddItem(new MenuItem("useHealPct", "生命值<=%丨使用治疗")).SetValue(new Slider(25, 1));
-                Heal.AddItem(new MenuItem("useHealDmg", "受到伤害=>%丨使用治疗")).SetValue(new Slider(40, 1));
+                var Heal = new Menu("治疗术", "mheal");
+                Heal.AddItem(new MenuItem("useHeal", "启用 治疗")).SetValue(true);
+                Heal.AddItem(new MenuItem("useHealPct", "治疗 生命值 % ")).SetValue(new Slider(25, 1));
+                Heal.AddItem(new MenuItem("useHealDmg", "治疗 受到伤害 %")).SetValue(new Slider(40, 1));
                 _mainMenu.AddSubMenu(Heal);
             }
 
@@ -110,8 +110,8 @@ namespace Oracle.Extensions
             {
                 _cc = true;
                 var Clarity = new Menu("清晰术", "mclarity");
-                Clarity.AddItem(new MenuItem("useClarity", "启 用")).SetValue(true);
-                Clarity.AddItem(new MenuItem("useClarityPct", "魔法值<=%丨使用清晰术")).SetValue(new Slider(40, 1));
+                Clarity.AddItem(new MenuItem("useClarity", "启用 清晰术")).SetValue(true);
+                Clarity.AddItem(new MenuItem("useClarityPct", "使用 魔法值 % ")).SetValue(new Slider(40, 1));
                 _mainMenu.AddSubMenu(Clarity);
             }
 
@@ -119,10 +119,10 @@ namespace Oracle.Extensions
             if (barrier != SpellSlot.Unknown)
             {
                 _bb = true;
-                var Barrier = new Menu("屏 障", "mbarrier");
-                Barrier.AddItem(new MenuItem("useBarrier", "启 用")).SetValue(true);
-                Barrier.AddItem(new MenuItem("useBarrierPct", "生命值<=%丨使用屏障")).SetValue(new Slider(25, 1));
-                Barrier.AddItem(new MenuItem("useBarrierDmg", "受到伤害=>%丨使用屏障")).SetValue(new Slider(40, 1));
+                var Barrier = new Menu("屏障", "mbarrier");
+                Barrier.AddItem(new MenuItem("useBarrier", "启用 屏障")).SetValue(true);
+                Barrier.AddItem(new MenuItem("useBarrierPct", "使用 生命值 % ")).SetValue(new Slider(25, 1));
+                Barrier.AddItem(new MenuItem("useBarrierDmg", "使用 受到伤害 %")).SetValue(new Slider(40, 1));
                 _mainMenu.AddSubMenu(Barrier);
             }
 
@@ -131,12 +131,12 @@ namespace Oracle.Extensions
             {
                 _ee = true;
                 var Exhaust = new Menu("虚弱", "mexhaust");
-                Exhaust.AddItem(new MenuItem("useExhaust", "启 用")).SetValue(true);
-                Exhaust.AddItem(new MenuItem("aExhaustPct", "队友血量<=%丨使用虚弱")).SetValue(new Slider(35));
-                Exhaust.AddItem(new MenuItem("eExhaustPct", "敌人血量<=%丨使用虚弱")).SetValue(new Slider(35));
-                Exhaust.AddItem(new MenuItem("exhDanger", "危险情况时 使用")).SetValue(true);
+                Exhaust.AddItem(new MenuItem("useExhaust", "启用 虚弱")).SetValue(true);
+                Exhaust.AddItem(new MenuItem("aExhaustPct", "使用 队友血量 %")).SetValue(new Slider(35));
+                Exhaust.AddItem(new MenuItem("eExhaustPct", "使用 敌人血量 %")).SetValue(new Slider(35));
+                Exhaust.AddItem(new MenuItem("exhDanger", "危险情况使用")).SetValue(true);
                 Exhaust.AddItem(new MenuItem("exhaustMode", "模式: "))
-                    .SetValue(new StringList(new[] {"任何时候", "连招"}));
+                    .SetValue(new StringList(new[] {"总是", "连招"}));
 
                 _mainMenu.AddSubMenu(Exhaust);
             }

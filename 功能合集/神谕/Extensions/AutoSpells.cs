@@ -432,21 +432,21 @@ namespace Oracle.Extensions
             if (!menuvar.Contains("zhonya"))
             {
                 if (menuvar.Contains("slow"))
-                    menuName.AddItem(new MenuItem("use" + menuvar + "Slow", "Remove slows").SetValue(true));
+                    menuName.AddItem(new MenuItem("use" + menuvar + "Slow", "移除 减速").SetValue(true));
 
                 if (!menuvar.Contains("slow"))
-                    menuName.AddItem(new MenuItem("use" + menuvar + "Pct", "Use on HP %"))
+                    menuName.AddItem(new MenuItem("use" + menuvar + "Pct", "HP<=%丨使用"))
                         .SetValue(new Slider(dfv, 1, 99));
 
                 if (!menuvar.Contains("ult") && !menuvar.Contains("slow"))
-                    menuName.AddItem(new MenuItem("use" + menuvar + "Dmg", "Use on Dmg dealt %"))
+                    menuName.AddItem(new MenuItem("use" + menuvar + "Dmg", "受到伤害=>%丨使用"))
                         .SetValue(new Slider(45));
 
                 if (menuvar.Contains("soraka"))
-                    menuName.AddItem(new MenuItem("useSorakaMana", "Minimum HP % to use")).SetValue(new Slider(35));
+                    menuName.AddItem(new MenuItem("useSorakaMana", "最小HP百分比<=%丨使用")).SetValue(new Slider(35));
 
                 if (usemana)
-                    menuName.AddItem(new MenuItem("use" + menuvar + "Mana", "Minimum mana % to use"))
+                    menuName.AddItem(new MenuItem("use" + menuvar + "Mana", "最小MP百分比<=%丨使用"))
                         .SetValue(new Slider(45));
 
             }
@@ -455,12 +455,12 @@ namespace Oracle.Extensions
             {
                 if (menuvar.Contains("CC"))
                 {
-                    menuName.AddItem(new MenuItem("use" + menuvar + "Any", "Use on any Spell")).SetValue(false);
-                    menuName.AddItem(new MenuItem("use" + menuvar + "CC", "Use on Crowd Control")).SetValue(true);
+                    menuName.AddItem(new MenuItem("use" + menuvar + "Any", "任何法术丨使用")).SetValue(false);
+                    menuName.AddItem(new MenuItem("use" + menuvar + "CC", "被控时丨使用")).SetValue(true);
                 }
 
-                menuName.AddItem(new MenuItem("use" + menuvar + "Norm", "Use on Dangerous (Spells)")).SetValue(slot != SpellSlot.R);
-                menuName.AddItem(new MenuItem("use" + menuvar + "Ults", "Use on Dangerous (Ultimates Only)")).SetValue(true);
+                menuName.AddItem(new MenuItem("use" + menuvar + "Norm", "危险时使用 (法术)")).SetValue(slot != SpellSlot.R);
+                menuName.AddItem(new MenuItem("use" + menuvar + "Ults", "危险时使用 (仅大招)")).SetValue(true);
             }
 
             _mainMenu.AddSubMenu(menuName);

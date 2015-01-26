@@ -53,8 +53,8 @@ namespace Oracle
             Consumables.Initialize(Origin);
             AutoSpells.Initialize(Origin);
 
-            var Config = new Menu("菜 单", "oracleconfig");
-            var DangerMenu = new Menu("危险 设定", "dangerconfig");
+            var Config = new Menu("额外 设置", "oracleconfig");
+            var DangerMenu = new Menu("危险 配置", "dangerconfig");
 
             foreach (var i in ObjectManager.Get<Obj_AI_Hero>().Where(hero => hero.Team != Me.Team))
             {
@@ -74,28 +74,28 @@ namespace Oracle
 
             Config.AddSubMenu(DangerMenu);
          
-            var CleanseMenu = new Menu("净化 Debuffs", "cdebufs");
-            CleanseMenu.AddItem(new MenuItem("stun", "眩 晕")).SetValue(true);
-            CleanseMenu.AddItem(new MenuItem("charm", "魅 惑")).SetValue(true);
-            CleanseMenu.AddItem(new MenuItem("taunt", "嘲 讽")).SetValue(true);
-            CleanseMenu.AddItem(new MenuItem("fear", "恐 惧")).SetValue(true);
-            CleanseMenu.AddItem(new MenuItem("snare", "束 缚")).SetValue(true);
-            CleanseMenu.AddItem(new MenuItem("silence", "沉 默")).SetValue(true);
-            CleanseMenu.AddItem(new MenuItem("suppression", "压 制")).SetValue(true);
-            CleanseMenu.AddItem(new MenuItem("polymorph", "变 形")).SetValue(true);
-            CleanseMenu.AddItem(new MenuItem("blind", "致 盲")).SetValue(false);
-            CleanseMenu.AddItem(new MenuItem("slow", "减 速")).SetValue(false);
-            CleanseMenu.AddItem(new MenuItem("poison", "中 毒")).SetValue(false);
+            var CleanseMenu = new Menu("净化 状态", "cdebufs");
+            CleanseMenu.AddItem(new MenuItem("stun", "眩晕")).SetValue(true);
+            CleanseMenu.AddItem(new MenuItem("charm", "魅惑")).SetValue(true);
+            CleanseMenu.AddItem(new MenuItem("taunt", "嘲讽")).SetValue(true);
+            CleanseMenu.AddItem(new MenuItem("fear", "恐惧")).SetValue(true);
+            CleanseMenu.AddItem(new MenuItem("snare", "陷阱")).SetValue(true);
+            CleanseMenu.AddItem(new MenuItem("silence", "沉默")).SetValue(true);
+            CleanseMenu.AddItem(new MenuItem("suppression", "虚弱")).SetValue(true);
+            CleanseMenu.AddItem(new MenuItem("polymorph", "变形")).SetValue(true);
+            CleanseMenu.AddItem(new MenuItem("blind", "致盲")).SetValue(false);
+            CleanseMenu.AddItem(new MenuItem("slow", "减速")).SetValue(false);
+            CleanseMenu.AddItem(new MenuItem("poison", "制毒")).SetValue(false);
             Config.AddSubMenu(CleanseMenu);
 
-            var DebugMenu = new Menu("调 试", "debugmenu");
-            DebugMenu.AddItem(new MenuItem("dbool", "开启 控制台调试")).SetValue(false);
+            var DebugMenu = new Menu("调试选项", "debugmenu");
+            DebugMenu.AddItem(new MenuItem("dbool", "启用活化剂调试")).SetValue(false);
             Config.AddSubMenu(DebugMenu);
 
             Origin.AddSubMenu(Config);
 
             Origin.AddItem(
-                new MenuItem("ComboKey", "Combo (Active)")
+                new MenuItem("ComboKey", "连招 (启用)")
                     .SetValue(new KeyBind(32, KeyBindType.Press)));
 
             Origin.AddToMainMenu();
@@ -104,7 +104,7 @@ namespace Oracle
             GameObject.OnCreate += GameObject_OnCreate;
             Obj_AI_Base.OnProcessSpellCast += Obj_AI_Base_OnProcessSpellCast;
 
-            Game.PrintChat("<font color=\"#1FFF8F\">Oracle r." + Revision + " -</font> by Kurisu 花边-神谕菜单 启动成功!");
+            Game.PrintChat("<font color=\"#1FFF8F\">花边-神谕 加载成功!</font>");
         }
 
         private static GameObj _satchel, _miasma, _minefield, _crowstorm, _fizzbait, _caittrap;
