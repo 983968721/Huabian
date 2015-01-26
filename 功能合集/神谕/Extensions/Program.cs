@@ -44,7 +44,7 @@ namespace Oracle
             Game.OnGameUpdate += Game_OnGameUpdate;
 
             ChampionName = Me.ChampionName;
-            Origin = new Menu("Oracle", "oracle", true);
+            Origin = new Menu("花边-神谕", "oracle", true);
 
             Cleansers.Initialize(Origin);
             Defensives.Initialize(Origin);
@@ -53,7 +53,7 @@ namespace Oracle
             Consumables.Initialize(Origin);
             AutoSpells.Initialize(Origin);
 
-            var Config = new Menu("花边-神谕菜单", "oracleconfig");
+            var Config = new Menu("菜 单", "oracleconfig");
             var DangerMenu = new Menu("危险 设定", "dangerconfig");
 
             foreach (var i in ObjectManager.Get<Obj_AI_Hero>().Where(hero => hero.Team != Me.Team))
